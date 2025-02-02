@@ -3,7 +3,7 @@ const createStore = redux.createStore;
 
 //Action Name
 const BUY_CAKE = 'BUY_CAKE';
-
+const BUY_ICE_CREAMS='BUY_ICE_CREAMS';
 //Action Creator
 function buyCake () {
     return {
@@ -11,11 +11,18 @@ function buyCake () {
         info: 'First Redux Action'
     }
 }
+function buyIceCream () {
+    return {
+        type: BUY_ICE_CREAMS,
+        info: 'Second Redux Action'
+    }
+}
 
 //(previousState, action) => newState
 
 const initialState = {
-    numOfCakes: 10 //default value
+    numOfCakes: 10, //default value
+    numOfIceCreams: 20
 }
 
 //defining the reducer function
@@ -25,6 +32,10 @@ const reducer = (state= initialState, action) =>{
         case BUY_CAKE : return{
             ...state,
             numOfCakes: state.numOfCakes - 1
+        }
+        case BUY_ICE_CREAMS: return{
+            ...state,
+            numOfIceCreams:state.numOfIceCreams - 1
         }
         default: return state;
     }
@@ -43,7 +54,7 @@ const unsubscribed = store.subscribe(()=>console.log("Updated State",store.getSt
 //third responsibility
 store.dispatch(buyCake());
 store.dispatch(buyCake());
-store.dispatch(buyCake());
-store.dispatch(buyCake());
+store.dispatch(buyIceCream());
+store.dispatch(buyIceCream());
 
 unsubscribed();
