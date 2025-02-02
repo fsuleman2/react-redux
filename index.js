@@ -24,6 +24,12 @@ const initialState = {
     numOfCakes: 10, //default value
     numOfIceCreams: 20
 }
+const initialCakeState = {
+    numOfCakes: 10, //default value
+}
+const initialIceCreamState = {
+    numOfIceCreams: 20
+}
 
 //defining the reducer function
 
@@ -40,6 +46,28 @@ const reducer = (state= initialState, action) =>{
         default: return state;
     }
 }
+//splitting reducer into separately
+const cakeReducer = (state= initialCakeState, action) =>{
+    switch(action.type){
+        case BUY_CAKE : return{
+            ...state,
+            numOfCakes: state.numOfCakes - 1
+        }
+        default: return state;
+    }
+}
+
+//for IceCream
+const iceCreamReducer = (state= initialIceCreamState, action) =>{
+    switch(action.type){
+        case BUY_ICE_CREAMS: return{
+            ...state,
+            numOfIceCreams:state.numOfIceCreams - 1
+        }
+        default: return state;
+    }
+}
+
 
 // V Imp to note here we're not mutating the state object instead we're returning the new Object
 // our initial State might contain more than one property that is why we we should always create
