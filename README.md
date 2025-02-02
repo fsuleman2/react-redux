@@ -86,3 +86,15 @@ const rootReducer = combinedReducers({
 const store = createStore(rootReducer);
 ```
 - we can specify key anything but value should be the name of the reducer which given already
+
+<br/>
+
+### Middleware
+- It is the suggested way to extend Redux with custom functionality
+- It provides a third-party extension point between dispatching an action, and the moment it reaches the reducer
+- We can use middleware for logging, crash reporting, performing asynchrounous tasks etc...
+#### Installation
+
+```bash
+npm i --save redux-logger
+```

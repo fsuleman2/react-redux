@@ -1,6 +1,11 @@
+/******************* IMPORTS STARTS***************************** */
 const redux = require('redux');
+const reduxLogger = require('redux-logger');
 const createStore = redux.createStore;
 const combinedReducers = redux.combineReducers;
+const applyMiddleware = redux.applyMiddleware;
+const logger = reduxLogger.createLogger();
+/******************* IMPORTS ENDS***************************** */
 //Action Name
 const BUY_CAKE = 'BUY_CAKE';
 const BUY_ICE_CREAMS='BUY_ICE_CREAMS';
@@ -78,10 +83,10 @@ const rootReducer = combinedReducers({
     cake : cakeReducer,
     iceCream: iceCreamReducer
 })
-const store = createStore(rootReducer);
+const store = createStore(rootReducer,applyMiddleware(logger));
 console.log('initial state',store.getState());
 
-const unsubscribed = store.subscribe(()=>console.log("Updated State is ",store.getState()));
+const unsubscribed = store.subscribe(()=>{});
 //third responsibility
 store.dispatch(buyCake());
 store.dispatch(buyCake());
