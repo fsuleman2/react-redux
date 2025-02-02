@@ -1,6 +1,6 @@
 const redux = require('redux');
 const createStore = redux.createStore;
-
+const combinedReducers = redux.combineReducers;
 //Action Name
 const BUY_CAKE = 'BUY_CAKE';
 const BUY_ICE_CREAMS='BUY_ICE_CREAMS';
@@ -74,11 +74,14 @@ const iceCreamReducer = (state= initialIceCreamState, action) =>{
 // copy of the state object and then change only the properties that needs to.
 // To make the copy of the state object we basically use the spread operator. and update only
 // specific value and other values will remain unchanged
-
-const store = createStore(reducer);
+const rootReducer = combinedReducers({
+    cake : cakeReducer,
+    iceCream: iceCreamReducer
+})
+const store = createStore(rootReducer);
 console.log('initial state',store.getState());
 
-const unsubscribed = store.subscribe(()=>console.log("Updated State",store.getState()));
+const unsubscribed = store.subscribe(()=>console.log("Updated State is ",store.getState()));
 //third responsibility
 store.dispatch(buyCake());
 store.dispatch(buyCake());

@@ -67,3 +67,22 @@ const buyCake = () => {
   3. Allows state to be updated via dispatch(action)
   4. Registers listeners via subscribe(listener)
   5. Handles unregistering of listeners via the function returned by subscribe(listener)
+#### How to deal with multiple actions, Action Creators and Reducers?
+
+- we can write separate action, action creator and reducer function
+- but if u see initalli we setup only one reducer to store 
+  ``` javascript
+  const store = createStore(reducer);
+  ```
+
+- Redux provide one function called as <bold>combined reducers</bold> by which we can combine mutiple reducers into single reducer, which then can be passed to createStore method
+``` javascript
+const combinedReducers = redux.combineReducers;
+const rootReducer = combinedReducers({
+    //key: reducerFnName
+    cake : cakeReducer,
+    iceCream: iceCreamReducer
+})
+const store = createStore(rootReducer);
+```
+- we can specify key anything but value should be the name of the reducer which given already
