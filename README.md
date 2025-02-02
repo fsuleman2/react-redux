@@ -158,3 +158,12 @@ const store = createStore(rootReducer,applyMiddleware(logger));
 ``` bash
 npm install axios redux-thunk
 ```
+- Redux Thunk is a middleware for Redux that allows you to write action creators that return a function instead of an action. This is especially useful for handling asynchronous operations, like fetching data from an API or performing side effects.
+
+- Here’s a simple explanation:
+
+1. In Redux, actions are plain objects that represent a change or event in the application.
+
+2. Middleware like Redux Thunk lets you handle complex logic within your action creators.
+
+3. With Thunk, you can delay the dispatch of an action or dispatch only if certain conditions are met.
