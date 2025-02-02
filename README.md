@@ -98,3 +98,54 @@ const store = createStore(rootReducer);
 ```bash
 npm i --save redux-logger
 ```
+- will first import it
+``` javascript
+const reduxLogger = require('redux-logger');
+```
+- then store it in one const as we are in JS
+``` javascript
+const logger = reduxLogger.createLogger();
+```
+- we create applyMiddleware from 'react'
+``` javascript
+const applyMiddleware = redux.applyMiddleware;
+```
+- we update our store to use applyMiddleware
+``` javascript
+const store = createStore(rootReducer,applyMiddleware(logger));
+```
+<br/>
+
+### Async Actions
+
+#### Synchronous Actions
+1. As soon as an action was dispatched, the state was immediately updated.
+2. If you dispatch the BU_CAKE action, the numfCakes was right away decremented by 1.
+3. Same with BUY_ICECREAM action as well.
+
+#### Async Actions
+- Asynchronous API calls to fetch data from an end point and use that data in your application.
+- To demo this Asynch Actions we're gonna build one small app
+- Which fetched a lis to users from an API end point and stores it in the store.
+  1. State: Typically for data fetching will go with 3 flags
+   ``` javascript
+   state = {
+    loading: true,
+    data:[],//users data
+    error:''
+   }
+   ```
+  2. Actions: we are gonna have 3 actions
+     1. FETCH_USERS_REQUEST - Fetch list of users
+     2. FETCH_USERS_SUCCESS - Fetched Successfully
+     3. FETCH_USERS_FAILURE - Error fetching the data
+  
+  3. Reducer: 
+     1. case:  FETCH_USERS_REQUEST
+                loading: true
+     2. case: FETCH_USERS_SUCCESS
+                loading: false
+                users: data(from API)
+     3. FETCH_USERS_FAILURE
+                loading: false
+                error: error(from API)
