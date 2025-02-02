@@ -1,10 +1,15 @@
+/******************* IMPORTS STARTS***************************** */
 const redux = require('redux');
 const createStore = redux.createStore;
+const applyMiddleware = redux.applyMiddleware;
+const thunkMiddleware = require('redux-thunk').thunk
+const axios = require('axios');
+/******************* IMPORTS ENDS***************************** */
 //Step 1: State
 const initialState = {
   loading: false,
   users: [],
-  error: "",
+  error: "No Error",
 };
 
 //Step 2: Actions: we are gonna have 3 actions
@@ -59,5 +64,26 @@ const reducer = (state = initialState, action)=>{
     }
 }
 
-const store = createStore(reducer);
-//dispatching
+//action creator
+//what thunk middleware brings to the table is the ability for the action creator
+//to return a function instead of an action object
+const fetchUsers = () => {
+    return function(dispatch){
+        //dispatching
+        dispatch(featchUserRequest());//setting loading to true
+        axios.get('https://jsonplaceholder.typicode.com/users')
+        .then(response => {
+            //response.data is the array of users
+            const usersIds = response.data //.map(users => users.id);
+            dispatch(featchUserSuccess(usersIds));
+        })
+        .catch(error => {
+            //error.message
+            dispatch(featchUserFailure(error.message));
+        })
+    }
+
+}
+const store = createStore(reducer,applyMiddleware(thunkMiddleware));
+store.subscribe(()=> console.log(store.getState()));
+store.dispatch(fetchUsers())

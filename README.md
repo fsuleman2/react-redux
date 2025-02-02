@@ -149,3 +149,12 @@ const store = createStore(rootReducer,applyMiddleware(logger));
      3. FETCH_USERS_FAILURE
                 loading: false
                 error: error(from API)
+
+### Async action creators (for API CALL)
+#### packages
+- axios: Requests to an API end point
+- redux-thunk : this library is an middleware to  define async action creators
+  
+``` bash
+npm install axios redux-thunk
+```
