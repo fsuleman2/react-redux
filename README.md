@@ -120,10 +120,11 @@ const store = createStore(rootReducer,applyMiddleware(logger));
 
 #### Synchronous Actions
 1. As soon as an action was dispatched, the state was immediately updated.
-2. If you dispatch the BU_CAKE action, the numfCakes was right away decremented by 1.
+2. If you dispatch the BUY_CAKE action, the numfCakes was right away decremented by 1.
 3. Same with BUY_ICECREAM action as well.
 
 #### Async Actions
+- Asynchrouus Actions you now wait for a task to complete before dispatching an action
 - Asynchronous API calls to fetch data from an end point and use that data in your application.
 - To demo this Asynch Actions we're gonna build one small app
 - Which fetched a lis to users from an API end point and stores it in the store.
@@ -192,7 +193,7 @@ npm i redux-logger
 2. To view logs we have to check in the inspect console
    ![Project Logo](../redux-demo/react-redux-demo/src/assets/logsimage.png)
 
-### OwnProps:
+#### OwnProps:
 ownProps: This parameter represents the props that were passed to the component itself. It's useful when you need to access the component's own props to determine what part of the state to pass down as props.
 
 ``` javascript
@@ -205,3 +206,34 @@ ownProps: This parameter represents the props that were passed to the component 
 //pass null at the first argument
 export default connect(null, mapDispatchToProps)(ItemContainer);
 ```
+
+### Async Actions with React Redux
+- Read theory above
+- Here we are going to demonstrate it with fetches a list of users from an API end point and stores it in the redux store.
+   
+   1. state:
+   ``` 
+   initialState = {
+      loading: true, //data being fetch or not
+      date: [], //list of users
+      error:''//store the error in case of API fails
+   }
+   ```
+   
+   2. Actions:
+      1. FETCH_USERS_REQUEST - fetches list of users
+      2. FETCH_USERS_SUCCESS - Successfully fetched the users
+      3. FETCH_USERS_FAILURE - Failure to fetch the users
+
+   3. Reducers:
+      1. if Action Type is
+      ```
+         case: FETCH_USERS_REQUEST
+                  loading:true
+         case: FETCH_USERS_SUCCESS 
+                  loading:false
+                  users: data(from API)
+         case: FETCH_USERS_FAILURE 
+                  loading:false
+                  error: error(from API)
+      ```
