@@ -176,4 +176,10 @@ npm install axios redux-thunk
 #### HooksCakeContainer.jsx
 1. useSelector: is a hook which acts as close equivalent to the mapStateToProps function that we already had. 
    1. To get Hold or maintain in the redux store we use this hook
-2. 
+2. useDispatch to dispatch an action
+3. created one more feature called ice cream and added
+   1. iceCreamTypes.js
+   2. icCreamActions.js
+   3. iceCreamReducer.js
+4. Then combined this reducer with combineReducers funtion provided by reducer - Refer rootReducer.js
+5. and updated selector with state.cake.numOfCakes and similarly state.iceCream.numOfIceCream
