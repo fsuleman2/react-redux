@@ -167,3 +167,13 @@ npm install axios redux-thunk
 2. Middleware like Redux Thunk lets you handle complex logic within your action creators.
 
 3. With Thunk, you can delay the dispatch of an action or dispatch only if certain conditions are met.
+<br/>
+
+## React-Redux Libarary
+### react-redux-demo project completed
+### exploring useSelector hook and useDispatch hook provided by react-redux library
+
+#### HooksCakeContainer.jsx
+1. useSelector: is a hook which acts as close equivalent to the mapStateToProps function that we already had. 
+   1. To get Hold or maintain in the redux store we use this hook
+2. 
