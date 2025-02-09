@@ -202,7 +202,7 @@ ownProps: This parameter represents the props that were passed to the component 
       <ItemContainer cake/>
 ```
 - suppose you wanted to use mapDispatchToProps not mapStateToProps
-```` javascript
+``` javascript
 //pass null at the first argument
 export default connect(null, mapDispatchToProps)(ItemContainer);
 ```
@@ -212,7 +212,7 @@ export default connect(null, mapDispatchToProps)(ItemContainer);
 - Here we are going to demonstrate it with fetches a list of users from an API end point and stores it in the redux store.
    
    1. state:
-   ``` 
+   ``` javascript
    initialState = {
       loading: true, //data being fetch or not
       date: [], //list of users
@@ -227,7 +227,7 @@ export default connect(null, mapDispatchToProps)(ItemContainer);
 
    3. Reducers:
       1. if Action Type is
-      ```
+``` javascript
          case: FETCH_USERS_REQUEST
                   loading:true
          case: FETCH_USERS_SUCCESS 
@@ -236,4 +236,8 @@ export default connect(null, mapDispatchToProps)(ItemContainer);
          case: FETCH_USERS_FAILURE 
                   loading:false
                   error: error(from API)
-      ```
+```
+
+#### using axios & redux thunk for API calls
+  - by making use of thunk middleware fetchUsers() will written an another function instead of an action
+  - becoz of thunk only function can perform side effects and dispatch an action

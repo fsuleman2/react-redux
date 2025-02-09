@@ -1,3 +1,8 @@
+import {
+  FETCH_USERS_REQUEST,
+  FETCH_USERS_SUCCESS,
+  FETCH_USERS_FAILURE,
+} from "./userTypes";
 const initialState = {
   loading: true, //data being fetch or not
   date: [], //list of users
@@ -8,6 +13,7 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USERS_REQUEST:
       return {
+        ...initialState,
         loading: true,
       };
     case FETCH_USERS_SUCCESS:
@@ -20,7 +26,9 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
-    default:
-      break;
+      default:
+        return state;
   }
 };
+
+export default userReducer;
