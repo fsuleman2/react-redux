@@ -183,3 +183,11 @@ npm install axios redux-thunk
    3. iceCreamReducer.js
 4. Then combined this reducer with combineReducers funtion provided by reducer - Refer rootReducer.js
 5. and updated selector with state.cake.numOfCakes and similarly state.iceCream.numOfIceCream
+
+### adding logger middleware - Basically logs information related to redux store
+``` bash
+npm i redux-logger
+```
+1. import logger from react-logger and applyMiddleware from redux
+2. To view logs we have to check in the inspect console
+   ![Project Logo](../redux-demo/react-redux-demo/src/assets/logsimage.png)
