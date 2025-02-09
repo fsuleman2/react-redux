@@ -1,5 +1,5 @@
 import React from "react";
-import { buyIceCream } from "../redux/iceCream/iceCreamAction";
+import { buyIceCream } from "../redux";
 import { connect } from "react-redux";
 import HooksCakeContainer from "./HooksCakeContainer";
 

@@ -191,3 +191,17 @@ npm i redux-logger
 1. import logger from react-logger and applyMiddleware from redux
 2. To view logs we have to check in the inspect console
    ![Project Logo](../redux-demo/react-redux-demo/src/assets/logsimage.png)
+
+### OwnProps:
+ownProps: This parameter represents the props that were passed to the component itself. It's useful when you need to access the component's own props to determine what part of the state to pass down as props.
+
+``` javascript
+      <h2>Item Container</h2>
+      <ItemContainer/>
+      <ItemContainer cake/>
+```
+- suppose you wanted to use mapDispatchToProps not mapStateToProps
+```` javascript
+//pass null at the first argument
+export default connect(null, mapDispatchToProps)(ItemContainer);
+```
