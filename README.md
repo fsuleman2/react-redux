@@ -241,3 +241,7 @@ export default connect(null, mapDispatchToProps)(ItemContainer);
 #### using axios & redux thunk for API calls
   - by making use of thunk middleware fetchUsers() will written an another function instead of an action
   - becoz of thunk only function can perform side effects and dispatch an action
+
+# Redux Tool Kit - Into
+- with redux tool kit, the recommendation is to group together, user logic and action creators for a single feature for a single file
+- the file should contain 'slice' as a suffix
